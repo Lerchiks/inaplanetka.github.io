@@ -155,6 +155,7 @@
     
     margin-top: auto;
     flex-shrink: 0;
+    font-size: clamp(12px, 3vw, 24px);
 }
 
 .modal-footer a {
