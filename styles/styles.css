@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(10px, 3vw, 50px);
+    min-height: 100vh;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #0B0B09;
+    color: #FFFFFF;
+
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 100;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 33px;
+}

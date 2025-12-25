@@ -1,0 +1,32 @@
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(10px, 4vw, 28px);
+    gap: clamp(5px, 4vw, 56px);
+    height: 10vh;
+    padding: clamp(10px, 2vw, 40px) 0 ;
+}
+
+.contacts-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(5px, 5vw, 150px);
+}
+
+.contacts-footer a {
+    font-size: clamp(12px, 3vw, 24px);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: clamp(100px, 20vw, 250px);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #AEAEAE;
+}

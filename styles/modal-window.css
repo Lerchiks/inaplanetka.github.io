@@ -1,0 +1,183 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    border: 2px solid #FFFFFF;
+    position: relative;
+    background: #0B0B09;
+    color: #FFFFFF;
+    
+    width: 90vw;
+    max-width: 900px;
+    
+    height: 70vh;
+    max-height: 1100px;
+    
+
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    text-transform: uppercase;
+    overflow: hidden;
+
+    font-size: clamp(14px, 2.5vw, 20px);
+} 
+
+.modal-close-wrapper {
+    display: flex;
+    width: 90vw;
+    max-width: 900px;
+    justify-content: flex-end;
+}
+
+.modal-close {
+    font-size: clamp(40px, 4vw, 50px);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 1vw 1.7vw;
+}
+
+.modal-scroll {
+    border-top: 2px solid #ABABAB;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+
+    width: 100%;
+    
+    margin-top: clamp(20px, 2vw, 30px);
+    margin-bottom: clamp(20px, 2vw, 30px);
+    box-sizing: border-box;
+
+    font-size: clamp(10px, 2.5vw, 20px);
+    padding: clamp(15px, 2.5vw, 30px) clamp(20px, 5vw, 40px);
+
+    gap: clamp(10px, 2vw, 20px);
+}
+
+.modal-title {
+    font-size: clamp(20px, 4vw, 40px);
+    font-weight: 600;
+    width: 85vw;
+    max-width: 700px;
+    text-align: center;
+}
+
+.modal-title h2 {
+    font-size: clamp(20px, 6vw, 40px);
+    font-weight: 600;
+}
+
+.modal-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.modal-text-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2px, 2vw, 15px);
+    text-align: justify;
+}
+
+.modal-cost {
+    width: 100%;
+}
+
+.modal-title-cost {
+    margin: 0 clamp(10px, 5vw, 40px);
+    font-size: clamp(10px, 4vw, 30px);
+    font-weight: 600;
+    margin-top: clamp(20px, 3vw, 50px);
+    
+}
+
+.cost-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: clamp(15px, 2vw, 30px);
+    margin-top: clamp(15px, 2vw, 30px);
+    text-align: center;
+}
+
+.cost-wrapper .modal-text-list {
+    gap: clamp(1px, 2vw, 10px);
+    list-style: none;
+    
+}
+
+.modal-footer {
+    background-color: #ABABAB;
+    color: #0B0B09;
+
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 90vw;
+    max-width: 900px;
+
+    height: 5vh;
+    max-height: 15vh;
+
+    gap: 40px;
+    
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.modal-footer a {
+    color: #0B0B09;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.modal-text-wrapper {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 83vw;
+    max-width: 850px;
+}
+
+.modal-text-first, .modal-text-second {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: clamp(5px, 2vw, 20px) clamp(10px, 5vw, 60px);
+}
