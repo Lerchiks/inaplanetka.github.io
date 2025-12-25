@@ -15,8 +15,12 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: clamp(10px, 3vw, 50px);
+    gap: clamp(1vh, 4vh, 5vh);
     min-height: 100vh;
+}
+
+section {
+    margin: 0;
 }
 
 body {

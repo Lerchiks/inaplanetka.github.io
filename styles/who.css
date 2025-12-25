@@ -1,6 +1,6 @@
 .who-i-am-wrapper {
     display: flex;
-    margin: 100px 0;
+    margin: clamp(20px, 5vh, 100px) 0;
     width: 100%;
     justify-content: center;
 }
@@ -72,11 +72,37 @@
     text-transform: uppercase;
 }
 
+.more-text {
+    display: none;
+    width: clamp(280px, 80vw, 673px);
+}
+
+.more-text.open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caret.rotate {
+    transform: rotate(180deg);
+}
+
+.text-with-caret.open .caret {
+    position: static;          
+    display: block;
+    margin: clamp(5px, 2vw, 20px) auto 0;        
+    transform: rotate(180deg);
+}
+
+
 .caret {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
     position: absolute;
     left: 88%;
     top: 63%;
     transform: translate(clamp(8px, 2vw, 20px), clamp(-6px, -1vw, -12px));
-    width: clamp(24px, 4vw, 50px);
+    width: clamp(40px, 5vw, 60px);
     height: auto;
 }

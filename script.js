@@ -46,3 +46,49 @@ modal.querySelector('.modal-close').onclick = () => {
 modal.querySelector('.modal-overlay').onclick = () => {
     modal.classList.remove('active');
 };
+
+const caret = document.querySelector('.caret');
+
+caret.addEventListener('click', function () {
+    const wrapper = this.closest('.text-with-caret');
+    const moreText = wrapper.querySelector('.more-text');
+
+    moreText.classList.toggle('open');
+    wrapper.classList.toggle('open');
+});
+
+
+//Portfolio 
+
+
+const portfolioImages = [];
+portfolioImages.push('images/portfolio/main.jpg');
+
+for (let i = 1; i <= 32; i++) {
+    portfolioImages.push(`images/portfolio/ph${i}.jpg`);
+}
+
+const portfolioModal = document.getElementById('portfolioModal');
+const portfolioGrid = portfolioModal.querySelector('.portfolio-grid');
+const overlay = portfolioModal.querySelector('.modal-overlay');
+
+// Populate portfolio grid
+portfolioImages.forEach(imgSrc => {
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = 'Portfolio image';
+    portfolioGrid.appendChild(img);
+});
+
+const portfolio = document.getElementById('portfolio');
+
+portfolio.addEventListener('click', openPortfolio);
+
+function openPortfolio() {
+    portfolioModal.classList.add('open');
+}
+
+// Закрыть по оверлею
+overlay.addEventListener('click', () => {
+    portfolioModal.classList.remove('open');
+});
