@@ -76,6 +76,7 @@ portfolioImages.forEach(imgSrc => {
     const img = document.createElement('img');
     img.src = imgSrc;
     img.alt = 'Portfolio image';
+    img.loading = 'lazy';
     portfolioGrid.appendChild(img);
 });
 
@@ -107,3 +108,35 @@ portfolioGrid.addEventListener('click', (e) => {
 imageOverlay.addEventListener('click', () => {
     imageModal.classList.remove('open');
 });
+
+
+// upload
+const uploadBtn = document.getElementById('uploadBtn');
+
+// Показываем кнопку только если ?admin=1
+if (window.location.search.includes("admin=143214")) {
+  uploadBtn.style.display = "block";
+}
+
+uploadBtn.addEventListener('click', async () => {
+  const res = await fetch('/api/sign');
+  const data = await res.json();
+
+  cloudinary.openUploadWidget({
+    cloudName: data.cloudName,
+    folder: data.folder,
+    multiple: true,
+    timestamp: data.timestamp,
+    signature: data.signature
+  }, (error, result) => {
+    if (!error && result.event === "success") {
+      const portfolioGrid = document.querySelector('.portfolio-grid');
+      const img = document.createElement("img");
+      img.src = result.info.secure_url;
+      img.loading = "lazy";
+      portfolioGrid.appendChild(img);
+    }
+  });
+});
+
+
