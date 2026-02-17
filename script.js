@@ -59,16 +59,34 @@ caret.addEventListener('click', function () {
 
 
 //Portfolio 
+const portfolioGrid = document.querySelector('.portfolio-grid');
 
-const portfolioImages = [];
-portfolioImages.push('images/portfolio/main.jpg');
+// Получаем галерею с сервера
+async function loadPortfolio() {
+  try {
+    const res = await fetch('/api/gallery');
+    const data = await res.json();
 
-for (let i = 1; i <= 32; i++) {
-    portfolioImages.push(`images/portfolio/ph${i}.jpg`);
+    // очищаем grid на всякий случай
+    portfolioGrid.innerHTML = '';
+
+    data.images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Portfolio image';
+      img.loading = 'lazy';
+      portfolioGrid.appendChild(img);
+    });
+  } catch (err) {
+    console.error('Failed to load portfolio:', err);
+  }
 }
 
+// вызываем при загрузке страницы
+loadPortfolio();
+
+
 const portfolioModal = document.getElementById('portfolioModal');
-const portfolioGrid = portfolioModal.querySelector('.portfolio-grid');
 const overlay = portfolioModal.querySelector('.modal-overlay');
 
 // Populate portfolio grid
@@ -123,11 +141,11 @@ uploadBtn.addEventListener('click', async () => {
 
   cloudinary.openUploadWidget({
     cloudName: data.cloudName,
-  apiKey: data.apiKey,
-  uploadSignature: data.signature,          // ← rename!
-  uploadSignatureTimestamp: data.timestamp, // ← rename!
-  folder: data.folder,
-  multiple: true
+    apiKey: data.apiKey,
+    uploadSignature: data.signature,          // ← rename!
+    uploadSignatureTimestamp: data.timestamp, // ← rename!
+    folder: data.folder,
+    multiple: true
   }, (error, result) => {
     if (!error && result.event === "success") {
       const portfolioGrid = document.querySelector('.portfolio-grid');
