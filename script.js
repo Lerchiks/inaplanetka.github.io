@@ -63,11 +63,18 @@ const portfolioGrid = document.querySelector('.portfolio-grid');
 
 // Получаем галерею с сервера
 async function loadPortfolio() {
+  if (!portfolioGrid) return;
+
   try {
     const res = await fetch('/api/gallery');
     const data = await res.json();
 
-    // очищаем grid на всякий случай
+    if (!data.images || !Array.isArray(data.images)) {
+      console.error('No images returned from /api/gallery');
+      return;
+    }
+
+    // очищаем grid
     portfolioGrid.innerHTML = '';
 
     data.images.forEach(src => {

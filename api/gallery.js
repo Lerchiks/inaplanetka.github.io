@@ -11,9 +11,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Basic Auth для Cloudinary Admin API
     const auth = Buffer.from(`${API_KEY}:${API_SECRET}`).toString("base64");
-
     const response = await fetch(
       `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/image?prefix=${FOLDER}/`,
       {
@@ -25,15 +23,19 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    if (!data.resources) {
-      return res.status(500).json({ error: "No resources returned from Cloudinary" });
+    if (!response.ok) {
+      console.error("Cloudinary API error:", data);
+      return res.status(response.status).json({ error: "Cloudinary API error", details: data });
+    }
+
+    if (!data.resources || data.resources.length === 0) {
+      return res.status(200).json({ images: [] });
     }
 
     const images = data.resources.map(img => img.secure_url);
-
     res.status(200).json({ images });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Cannot fetch gallery from Cloudinary" });
+    console.error("Server error fetching Cloudinary gallery:", err);
+    res.status(500).json({ error: "Cannot fetch gallery from Cloudinary", details: err.message });
   }
 }
