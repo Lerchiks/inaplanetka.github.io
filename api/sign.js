@@ -1,6 +1,10 @@
 const crypto = require("crypto");
 
 export default function handler(req, res) {
+    console.log('CLOUDINARY_API_KEY:', process.env.CLOUDINARY_API_KEY ? 'OK' : 'MISSING');
+    console.log('CLOUDINARY_API_SECRET:', process.env.CLOUDINARY_API_SECRET ? 'OK' : 'MISSING');
+    console.log('CLOUDINARY_CLOUD_NAME:', process.env.CLOUDINARY_CLOUD_NAME ? 'OK' : 'MISSING');
+
   const timestamp = Math.floor(Date.now() / 1000);
   const folder = "AlinaGallery";
 
