@@ -6,10 +6,19 @@ export default async function handler(req, res) {
   const API_SECRET = process.env.CLOUDINARY_API_SECRET;
   const FOLDER = "AlinaGallery";
 
+  // basic auth для Cloudinary Admin API
+  const auth = Buffer.from(`${API_KEY}:${API_SECRET}`).toString("base64");
+
   try {
     const response = await fetch(
-      `https://res.cloudinary.com/${CLOUD_NAME}/image/list/${FOLDER}.json`
+      `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/image?prefix=${FOLDER}`,
+      {
+        headers: {
+          Authorization: `Basic ${auth}`
+        }
+      }
     );
+
     const data = await response.json();
 
     // вернем массив URL изображений
