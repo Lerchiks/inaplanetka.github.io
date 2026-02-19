@@ -35,7 +35,6 @@ export default async function handler(req, res) {
 
     // 2. Добавляем кэширование (опционально, для скорости)
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
-    console.log(res.status(200).json());
     // 3. Отправляем готовый массив
     return res.status(200).json({ images });
 
