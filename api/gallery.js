@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     secure: true 
   });
 
-  const FOLDER = "Home/AlinaGallery";
+  const FOLDER = "AlinaGallery";
 
   try {
     const result = await cloudinary.api.resources({
