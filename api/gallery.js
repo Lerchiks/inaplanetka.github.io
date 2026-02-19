@@ -12,7 +12,6 @@ export default async function handler(req, res) {
 
   try {
     const result = await cloudinary.api.resources({
-      type: 'upload',
       prefix: FOLDER,
       max_results: 100 
     });
